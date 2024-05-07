@@ -19,3 +19,53 @@ Here, you will find information on:
 
 ## The Team
 
+The Core BioInformatics at New York University Abu Dhabi was established to provide a nexus for cutting-edge life sciences research in the United Arab Emirates, with world-class facilities and resources to promote innovative advances in genomics and systems biology.
+
+Our focus is to provide computational infrastructure and services for sequence analysis in support of a wide range of research projects. The team develops analytical pipelines, joint genomics resources, training programs, data policies, and handles data management.
+
+The team’s mission is to:
+- Establish and maintain high throughput computational pipelines.
+- Collaborate and support NYUAD’s multidisciplinary research programs.
+- Provide Scientific project management solutions to researchers.
+- Establish and maintain data management solutions.
+- Provide expert scientific consultation and advice.
+- Bioinformatics training and personal development to the wider NYUAD community.
+- Develop new tools and resources for the analysis, visualization and management of high throughput genomics datasets.
+
+The team focuses on the following types of analysis:
+- Resequencing and structural variation analysis.
+- De novo genome and transcriptome assembly.
+- Metagenomic (amplicon and shotgun) assembly and analysis.
+- Epigenetic analysis.
+- Gene finding and annotation.
+- Expression analysis (differential gene expression and transcriptome profiling) on whole and Single Cell RNAseq.
+- Integrative genomics analysis (scRNA, scATAC, Proteome, Metabolome).
+- ML/DL analysis modelling.
+
+Our team includes individuals with diverse backgrounds and experiences, which enables us to target the focus areas mentioned above.
+
+- Kristin C Gunsalus - Director of Bioinformatics CGSB.
+- Nizar Drou - Bioinformatics Lead Developer CGSB
+- Muhammad Arshad - Bioinformatics Data Analyst CGSB
+- Jayaram Radhakrishnan - Bioinformatics Infrastructure Engineer CGSB
+- Guiseppe Antonio Saldi - 
+- Nabil Rahiman - Bioinformatics Full Stack Developer CGSB
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
