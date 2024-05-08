@@ -59,7 +59,7 @@ To get in touch with us, please send us an email at nyuad.cgsb.cb@nyu.edu
 Our LIMS is based on the open source MISO software https://github.com/miso-lims/miso-lims.
 If you are interested in submitting samples for sequencing at NYUAD, you will have to have the relevant information added in MISO.
 
-You will first need to open an account on our MISO instance, and you can do that by filling out this form https://docs.google.com/forms/d/e/1FAIpQLSfx3CxLrFb7FRh0hZlUfy2V-n85u1OTxSKngCoCzqyEs9psNQ/viewform.
+You will first need to open an account on our MISO instance, and you can do that by filling out this [form](https://docs.google.com/forms/d/e/1FAIpQLSfx3CxLrFb7FRh0hZlUfy2V-n85u1OTxSKngCoCzqyEs9psNQ/viewform).
 
 Our MISO instance can be accessed here https://miso.abudhabi.nyu.edu/.
 
