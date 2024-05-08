@@ -93,6 +93,30 @@ In our current implementation, GURU is at the heart of our sequencing data proce
 The system is very flexible an customizaqble, and it can be "plugged-in" to various workflows, even beyond genomics. If you are interested in using GURU for your research or setup, then please send us an email.
 
 
+## JIRA
+
+
+
+## NASQAR
+
+
+
+## BioSAILs
+
+
+
+## The HPC GENCORE software modules
+
+
+
+## The HPC Front end Interface
+
+
+## Data arechiving/dearchiving, sharing, and submission to public repositories
+
+
+## Tips and Tricks
+
 
 
 
