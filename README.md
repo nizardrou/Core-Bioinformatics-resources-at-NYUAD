@@ -54,6 +54,27 @@ Our team includes individuals with diverse backgrounds and experiences, which en
 To get in touch with us, please send us an email at nyuad.cgsb.cb@nyu.edu
 
 
+## MISO
+
+Our LIMS is based on the open source MISO software https://github.com/miso-lims/miso-lims.
+If you are interested in submitting samples for sequencing at NYUAD, you will have to have the relevant information added in MISO.
+
+You will first need to open an account on our MISO instance, and you can do that by filling out this form https://docs.google.com/forms/d/e/1FAIpQLSfx3CxLrFb7FRh0hZlUfy2V-n85u1OTxSKngCoCzqyEs9psNQ/viewform.
+Our MISO instance can be accessed here https://miso.abudhabi.nyu.edu/.
+
+We have also added a quick video tutorial regarding MISO here https://youtu.be/vE5mFv-zMpk.
+
+Once you have opened your account successfully, you will be able to start submitting samples for sequencing, and if you face any issues, then please let us know using the email address nyuad.cgsb.cb@nyu.edu.
+
+
+## GURU
+
+GURU stands for **G**enomics seq**U**encing **R**un a**U**tomation, 
+
+
+
+
+
 
 
 
