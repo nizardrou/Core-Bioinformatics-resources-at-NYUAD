@@ -51,7 +51,7 @@ Our team includes individuals with diverse backgrounds and experiences, which en
 - Guiseppe Antonio Saldi - Data Computational Scientis.
 - Nabil Rahiman - Bioinformatics Full Stack Developer CGSB.
 
-To get in touch with us, please send us an email at [nyuad.cgsb.cb@nyu.edu ]
+To get in touch with us, please send us an email at nyuad.cgsb.cb@nyu.edu
 
 
 
