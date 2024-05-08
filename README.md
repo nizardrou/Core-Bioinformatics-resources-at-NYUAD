@@ -45,11 +45,13 @@ The team focuses on the following types of analysis:
 Our team includes individuals with diverse backgrounds and experiences, which enables us to target the focus areas mentioned above.
 
 - Kristin C Gunsalus - Director of Bioinformatics CGSB.
-- Nizar Drou - Bioinformatics Lead Developer CGSB
-- Muhammad Arshad - Bioinformatics Data Analyst CGSB
-- Jayaram Radhakrishnan - Bioinformatics Infrastructure Engineer CGSB
-- Guiseppe Antonio Saldi - 
-- Nabil Rahiman - Bioinformatics Full Stack Developer CGSB
+- Nizar Drou - Bioinformatics Lead Developer CGSB.
+- Muhammad Arshad - Bioinformatics Data Analyst CGSB.
+- Jayaram Radhakrishnan - Bioinformatics Infrastructure Engineer CGSB.
+- Guiseppe Antonio Saldi - Data Computational Scientis.
+- Nabil Rahiman - Bioinformatics Full Stack Developer CGSB.
+
+To get in touch with us, please send us an email at [nyuad.cgsb.cb@nyu.edu ]
 
 
 
