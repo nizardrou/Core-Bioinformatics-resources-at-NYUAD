@@ -63,7 +63,7 @@ You will first need to open an account on our MISO instance, and you can do that
 
 Our MISO instance can be accessed here https://miso.abudhabi.nyu.edu/.
 
-We have also added a quick video tutorial regarding MISO here https://youtu.be/vE5mFv-zMpk.
+We have also added a [quick video](https://youtu.be/vE5mFv-zMpk) MISO tutorial.
 
 Once you have opened your account successfully, you will be able to start submitting samples for sequencing, and if you face any issues, then please let us know using the email address nyuad.cgsb.cb@nyu.edu.
 
