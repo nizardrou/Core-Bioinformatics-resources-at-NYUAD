@@ -70,7 +70,31 @@ Once you have opened your account successfully, you will be able to start submit
 
 ## GURU
 
-GURU stands for **G**enomics seq**U**encing **R**un a**U**tomation, 
+[GURU](https://github.com/NYUAD-Core-Bioinformatics/guru) stands for **G**enomics seq**U**encing **R**un a**U**tomation, and it is an in-house developed software, which automates our sequencing data processing, data migration and archiving, as well the submission of workflows on the HPC.
+
+Although GURU is currently accessible to a handful of people (mainly the Core Bioinformatics and Core Sequencing teams), we will be rolling it out to everyone very soon.
+
+So why do we need such a system?
+
+Managing and maintaining a genomics infrastructure requires a multi-layered approach. Typically, that involves a Laboratory Information Management System (LIMS), the 
+Sequencing Instrumentation, the computational Infrastructure to store and process the data, as well as any other additional layers such as project management software (e.g. JIRA).
+In a production environment, all of these layers need to efficiently communicate and integrate with each other, which can be a complicated task. In addition, the approach needs 
+to be descriptive and yet flexible enough to accommodate new additions to the existing layers. Our solution, GURU (Genomics seqUencing Run aUtomation) addresses this need. GURU 
+is implemented using Apache Airflow that allows for the authoring, scheduling and monitoring of workflows, or DAGs (Directed Acyclic Graph). Specific DAGs have been implemented 
+to handle various sequencing runs, from SingleCell applications, to RNA/DNA sequencing, Short reads vs Long reads, archiving of sequencing runs, initiating specific types of 
+analysis (QC/WGS/WES/RNAseq/ATAC/CHiP etc.), as well as automatically communicate to end-users regarding the status of their samples/runs.
+GURU has been containerized using Docker to enable easy deployment across various configurations.
+
+In our current implementation, GURU is at the heart of our sequencing data processing. The steps below summerize how the system works in its current format:
+
+1. Once a sequencing runs is complete.
+2. 
+
+The system is very flexible an customizaqble, and it can be "plugged-in" to various workflows, even beyond genomics. If you are interested in using GURU for your research or setup, then please send us an email.
+
+
+
+
 
 
 
