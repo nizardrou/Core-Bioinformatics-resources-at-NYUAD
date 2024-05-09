@@ -131,7 +131,8 @@ If you want to install BioSAILs, you will have to install the [**biox**](https:/
 
 If you are running BioSAILs on the NYUAD HPC (Jubail), then it is already installed for you, so let's go ahead and submit a simple workflow.
 
-1. Login to the HPC (if you don't know how to do that, have a look [here]())
+1. Login to the HPC (if you don't know how to do that, have a look [here](https://github.com/nizardrou/Variant-Detection-and-Annotation-workshop?tab=readme-ov-file#setting-up-the-environment-and-copying-the-data)).
+2. Either copy the test folder or download the ****
 
 
 
