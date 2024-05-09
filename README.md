@@ -103,6 +103,36 @@ The system is very flexible an customizaqble, and it can be "plugged-in" to vari
 
 ## BioSAILs
 
+[BioSAILs](https://www.biorxiv.org/content/10.1101/509455v1) stands for **B**ioinformatics **S**tandardized **A**nalysis **I**nformation **L**ayers, and it represents our in-house developed workflow management (WF) system.
+
+Think of WFs as a system that enables the automation and execution of a series of predefined tasks.
+WF should be able to:
+
+1. Capable of scaling and adapting as the tasks or the requirements change.
+2. Can abstract the backend process from the user.
+3. Uses an interface to define and execute the tasks.
+4. Should also allow for monitoring and reporting of the executed workflows.
+5. Ideally, should allow for an easy entry barrier to new and less experienced users.
+6. Ideally, should be easily deployed on different architectures, and support multiple system setups.
+7. Should provide detailed logging in order to restart analyses and enable reproducible research.
+
+There are a lot of WMS currently available and choosing the right one can be a challenge, but you should definitely pick one!
+
+At NYUAD, BioSAILs is the engine behind all of our production level analyses, and it enables us to support the diverse research needs at NYUAD. It is also developed in-house, which means that it integrates seamlessly with our current HPC setup.
+At a high level, BioSAILs is made up of 2 commands that automate the execution of YAML based workflows, the **biox** command, and the **hpcrunner.pl** command.
+The **biox** command is responsible for reading a pre-defined YAML workflow and creating an executable shell script.
+The **hpcrunner.pl** command can then process the resulting shell script and submit on a workstation, HPC, or cloud infrastructure.
+
+BioSAILs has a number of advantages, mainly that it relies on YAML plain text format to define a workflow, it is easy to install and deploy using conda, it has a extensible REST API for more advanced users to utilize, and the fact that multiple production level WFs have already been written by the Core Bioinformatics team (so you don't have to reinvent the wheel!).
+
+Although this page is **NOT** intended to go explore BioSAILs in detail, we will be showing you how easy it is to execute a workflow using BioSAILs.
+
+If you want to install BioSAILs, you will have to install the [**biox**](https://bioconda.github.io/recipes/perl-biox-workflow-command/README.html?highlight=biox#package-Recipe%20&#x27;perl-biox-workflow-command&#x27;) and [**hpcrunner.pl**](https://bioconda.github.io/recipes/perl-hpc-runner-command/README.html?highlight=hpc%20runner#package-Recipe%20&#x27;perl-hpc-runner-command&#x27;) commands through conda/bioconda.
+
+If you are running BioSAILs on the NYUAD HPC (Jubail), then it is already installed for you, so let's go ahead and submit a simple workflow.
+
+1. Login to the HPC (if you don't know how to do that, have a look [here]())
+
 
 
 ## The HPC GENCORE software modules
