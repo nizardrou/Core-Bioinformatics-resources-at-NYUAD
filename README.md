@@ -132,18 +132,67 @@ If you want to install BioSAILs, you will have to install the [**biox**](https:/
 If you are running BioSAILs on the NYUAD HPC (Jubail), then it is already installed for you, so let's go ahead and submit a simple workflow.
 
 1. Login to the HPC (if you don't know how to do that, have a look [here](https://github.com/nizardrou/Variant-Detection-and-Annotation-workshop?tab=readme-ov-file#setting-up-the-environment-and-copying-the-data)).
-2. Either copy the test folder or download the ****
+2. Change to your own personal $SCRATCH directory
+   ```
+   cd $SCRATCH
+   ```
+4. Either copy the test folder or download the zipped folder [**biosails_test.zip**](https://github.com/nizardrou/Core_Bio_resources/blob/main/biosails_test.zip) that is included in this repo, and "cd" into that directory.
+   ```
+   cp -r /scratch/gencore/nd48/biosails_test . && cd biosails_test.sh
+   ```
+5. Load the BioSAILs software module
+   ```
+   module purge
+   module load gencore
+   module load gencore_biosails
+   ```
+6. We will now submit a workflow that runs FastQC on a number of FASTQ files, so let's first run biox,
+   ```
+   biox run -w fastqc_dalma.yml -o qc.sh
+   ```
+7. This creates a qc.sh shell script that we will be supplying to **hpcrunner.pl** to submit the job,
+   ```
+   hpcrunner.pl submit_jobs -i qc.sh
+   ```
+8. You can check the progress of the jobs by typing "**squeue**".
 
+Once the jobs complete, the output will be in the following directory,
+```
+ls data/processed
+```
+In the folder, there is another YAML workflow, which aligns the FASTQ paired end reads vs the E. coli reference genome. The alignment uses BWA MEM, followed by SAMtools to post process the alignments.
+You can run that workflow in a similar way to the example above.
+
+```
+biox run -w bwa-samtools-dalma.yml -o align.sh
+hpcrunner.pl submit_jobs -i align.sh --project align
+```
+
+The output will be in the data/analysis directory.
+
+To find what other WFs are available, have a look at the following folder on the HPC,
+```
+/scratch/gencore/workflows/latest/
+```
 
 
 ## The HPC GENCORE software modules
+
+One of the main deliverables of the Core Bioinformartics team at NYUAD has always been to maintain a Bioinformatics Software Stack on the HPC. We were involved early on with the team behind [Bioconda](https://bioconda.github.io/) (to find out more and read the orginal Bioconda paper, please follow this [link](https://www.ncbi.nlm.nih.gov/pmc/articles/pmid/29967506/)).
+
+Collectively, our software stack is called **gencore**, and it has gone through 2 iterations so far with 2 main differences between them.
+
+### GENCORE version 1
+
+
+### GENCORE version 2
 
 
 
 ## The HPC Front end Interface
 
 
-## Data arechiving/dearchiving, sharing, and submission to public repositories
+## Data archiving/dearchiving, sharing, and submission to public repositories
 
 
 ## Tips and Tricks
