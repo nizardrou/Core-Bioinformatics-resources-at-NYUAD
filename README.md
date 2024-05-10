@@ -125,7 +125,7 @@ The **hpcrunner.pl** command can then process the resulting shell script and sub
 
 BioSAILs has a number of advantages, mainly that it relies on YAML plain text format to define a workflow, it is easy to install and deploy using conda, it has a extensible REST API for more advanced users to utilize, and the fact that multiple production level WFs have already been written by the Core Bioinformatics team (so you don't have to reinvent the wheel!).
 
-Although this page is **NOT** intended to go explore BioSAILs in detail, we will be showing you how easy it is to execute a workflow using BioSAILs.
+Although this page is **NOT** intended to explore BioSAILs in detail, we will be showing you how easy it is to execute a workflow using BioSAILs.
 
 If you want to install BioSAILs, you will have to install the [**biox**](https://bioconda.github.io/recipes/perl-biox-workflow-command/README.html?highlight=biox#package-Recipe%20&#x27;perl-biox-workflow-command&#x27;) and [**hpcrunner.pl**](https://bioconda.github.io/recipes/perl-hpc-runner-command/README.html?highlight=hpc%20runner#package-Recipe%20&#x27;perl-hpc-runner-command&#x27;) commands through conda/bioconda.
 
@@ -182,10 +182,58 @@ One of the main deliverables of the Core Bioinformartics team at NYUAD has alway
 
 Collectively, our software stack is called **gencore**, and it has gone through 2 iterations so far with 2 main differences between them.
 
-### GENCORE version 1
+We deploy software in either one of the following ways:
 
+1. Install from conda if the software is already available.
+2. Installation from source in case it is not available as a conda package.
+3. Build a conda receipe of the package, publish it in the appropriate channel, and the install it locally.
+
+Installing the software is only the first part of the process, for these software to be accessible by all users, we build them into modules using [easybuild](https://easybuild.io/) so that users can simply use the existing "module load" structure that is already available on the HPC.
+If for whatever reason that is not possible, then we build a distinct conda environment and provide instructions on how to load that environment.
+
+If you need any software installed on the HPC, or even if you need help setting up your own personal software, just let us know using the email address at the top of this page.
+
+### GENCORE version 1
+The very first iteration of the gencore modules included software that were grouped together into distinct groups encompassing various analysis disciplines such as rnaseq, de novo assembly, epigenetics etc.
+
+Although this method provided the advantage of just using a single load command to load multiple peices of software (e.g. loading gencore_rnaseq loads bowtie2, hisat2, star, stringtie, htseq-count etc.), it provided a number of challenges as the software stacks grew.
+
+The first was that we didn't have the ability to search the software modules directly, meaning that if you wanted to know whether a particular software existed or not, there was no way to look for it on the HPC.
+
+The second was contineous integration. Everytime we added a peice of software to these modules, we had to test them for compatability, and whilst this is ok if you have only a handful of software, it ended up taking hours and sometimes days to rebuild the modules.
+
+Accessing the gencore/1 modules and loading the gencore_rnaseq for example
+```
+module purge
+module load gencore
+module load gencore_rnaseq
+```
 
 ### GENCORE version 2
+The second (and current) method of deploying the gencore modules (gencore/2) saw us going back to having each peice of software as its own individual package. Although this addessed the two main challenges that gencore/1 presented, it meant that we could not longer have groups of software under distinct analysis domains. That's not to say that it is not possible to address this shortcoming, but we found out that it doesn't offer a big advantage either.
+
+It also meant that we can have multiple versions of software always readily available and simple to deploy. To load samtools version 1.9 for example using the gencore/2 stack,
+```
+module purge
+module load all
+module load gencore/2
+module load samtools/1.9
+```
+
+If you want to find out what software is available within the gencore/2 modules,
+```
+module purge
+module load all
+module load gencore/2
+module avail
+```
+To search for a particular software (e.g. the de novo assembler abyss)
+```
+module purge
+module load all
+module load gencore/2
+module search abyss
+```
 
 
 
