@@ -12,9 +12,6 @@ Here, you will find information on:
 - Downstream analysis using NASQAR.
 - The in-house developed Workflow management system BioSAILs and the production level YAML workflows available.
 - Bioinformatics software ecosystem on the NYUAD HPC cluster Jubail (GENCORE modules).
-- The HPC front-end interface.
-- Customizing your submissions on the HPC including tips and tricks on how to get the best performance out of your analysis.
-
 
 
 ## The Team
@@ -87,18 +84,75 @@ GURU has been containerized using Docker to enable easy deployment across variou
 
 In our current implementation, GURU is at the heart of our sequencing data processing. The steps below summerize how the system works in its current format:
 
-1. Once a sequencing runs is complete.
-2. 
+1. Once a sequencing run is complete, GURU will send an email notification to the Core Bioinformatics team, the Core Sequencing team, as well as this people who submitted the sequnced samples (owners). The email contains some basic information with regards to the run and it informs everyone that the run has started processing.
+3. It then initiates the data transfer from the sequencing directory to the working directory on the HPC cluster.
+4. It connects to the MISO LIMS system to generate the samplesheet for the run and performs some precheck validation on the CSV generated samplesheet, including validating the sample name format, replacing special character symbols, and applying correct adapter sequences, etc.
+5. It proceeds with demultiplexing the run using bcl2fastq.
+6. Once demultiplexing is complete, it proceeds to run the QC/QT (Quality Checking and Quality Trimming) WF using Biosails.
+7. Once QC/QT is complete, GURU will sync the whole run to our archive storage without deleting it from the $SCRATCH working directory.
+8. Finally, GURU will send out another email to the same users in step 1, infroming them wether the run processing has completed successfully or not, and attaching a MultiQC quality report to that email.
 
-The system is very flexible an customizaqble, and it can be "plugged-in" to various workflows, even beyond genomics. If you are interested in using GURU for your research or setup, then please send us an email.
+The current iteration of GURU will see it transform into a complete stand-alone system that will allow users to select and customize their analysis using a friendly user interface. Once the run processing is complete, users will get an email with a link that they can follow, and select from existing workflows, tag samples, modify workflows on the fly, and submit their analysis.
+
+The system is very flexible an customizable, and it can be "plugged-in" to various workflows, even beyond genomics. If you are interested in using GURU for your research or setup, then please send us an email.
 
 
 ## JIRA
 
+One of the first systems to be deployed by the Core Bioinformatics was a project management solution, [JIRA](https://www.atlassian.com/software/jira) back in 2014.
+
+This might be counter-intuitive at first because you would think that we would be busy deploying software and writting analysis pipelines (or WFs), but if you don't document your work, then you would be lost after 10+ years of supporting various research programs!
+
+We wanted a centralized location where we document all the development and analysis work that we carry out, including what analysis relates to which projects/samples/sequencing runs.
+
+JIRA is a commercial software that has been used in a variety of settings, be it software development, advertisment, accounting, or even scientific project management. 
+
+One thing to note is that our JIRA version is quite outdated, but this is not by choice. We wanted a system that we have full control over it, from the front-end as well as the backend database, and one that we can deploy locally on our servers, and authenticate using our existing NYU methods. The latest version doesn't allow for that unfortunately unless we purchase a very (VERY) expensive data warehouse license.
+
+Still, even though we are working with an outdated version, the system still provides everything we need in terms of scientific project management.
+
+The way JIRA integrates with our high throughput sequencing and analysis at the moment is as follows:
+
+1. Once a sequencing run is complete, the core sequencing team creates a ticket under the NYUAD Core Sequencing (NCS) project in JIRA. This is a unique auto-incremental ID for a particular run (e.g. NCS-464, NCS-465 etc.). In this ticket, there is information regarding the person(s) who submitted the samples for sequencing, a brief description of the samples, and the name of the sequencing Flowcell.
+2. GURU is then launched by the sequencing team members and this NCS ticket is provided during the execution of GURU.
+3. GURU will then automatically find the ticket and send regular updates regarding the processing of the run (e.g. whether it is being demultiplexed, it is in QC/QT, full path to the run folder on the cluster etc.).
+4. Once the run has finished processing in GURU, the ticket then gets assigned to a member of the Core Bioinformatics team for final review (to ensure nothing went wrong).
+5. After the successful evaluation of the run, and if further downstream analysis is needed, a member of the Core Bioinformatics will create an analysis ticket under the NYUAD Core Bioinformatics (NCB) project in JIRA, and link it to the relevant NCS ticket. Additionally, if the analysis relates to any other tickets in JIRA (say it is part of a multirun projects), the links to these other tickets will be added.
+6. During the course of the analysis, we try and document as much information as possible including folder paths, issues that we faced and how we resolved them, software that was used and their installation and loading sequences, links to papers and/or other resources that are relevant to the analysis etc.
+7. Once we complete the analysis, the tickets are then closed or assigned to other team members for further analysis.
+
+Doing all of this means that we never lose track of any projects and we have a whole wealth of local resources that we can use to refer to when we need to repeat any analysis. It also means that we can very easily and quickly find out exactly where the data and metadata that relates to any project that we worked on actually is.
+Finally, it makes the whole process of offboarding and onboarding (in terms of data and data analysis) that much easier!
+
+
+If you require an account on our local JIRA instance, then please email us and we will arrange a quick tutorial on how everything is organized in JIRA and how you can interact with the system.
+
+
 
 
 ## NASQAR
+NASQAR stands for **N**ucleic **A**cid **S**e**Q**uence **A**nalysis **R**esource, and it is a front-end web-based platform for high throughput sequencing data analysis and visualization.
 
+The original NASQAR paper is available [here](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-020-03577-4).
+
+NASQAR offers a collection of custom and publicly available open-source web applications that make extensive use of a variety of R packages to provide interactive data analysis and visualization. It is not just a front-end to popular R packages, because we have spent considerable time and effort redeveloping a lot of these packages to fix bugs but more importantly, add additional functionalities.
+What we tried to address with NASQAR is not just to accomodate researchers who are not familiar with the command line and R, we wanted to proved users the same flexibility and analytical power without the need to install packages or code functionalities themselves. We also wanted a platform that can be accessed publically, or deployed locally in the easiest way possible. You can either run NASQAR on your own server or laptop in a few very easy steps, or use the public instance.
+
+Currently, we are working on NASQAR 2.0, and in this release we are working hard to deploy many (MANY) more apps and improve the aesthetics and the user interface. In the latest release, we are including apps for:
+- RNAseq (Bulk and SingleCell).
+- Sequencing data QC.
+- Metagenomics.
+- Epigenetics.
+- Whole genome and exome analysis (DNA).
+
+During the hands-on workshop, we will run a live demo of the latest DESEQ2 app in NASQAR 2.0, and if you want to know more about NASQAR 2.0 and how to use/deploy it for your research, then please email us and let us know.
+
+NASQAR Github page: https://github.com/nasqar/NASQAR
+NASQAR 2.0 Github page: https://github.com/NYUAD-Core-Bioinformatics/Nasqar2
+NASQAR publication: https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-020-03577-4
+NASQAR 2.0 web address: https://nasqar2.abudhabi.nyu.edu/
+
+PLEASE NOTE THAT THE ORIGINAL NASQAR PUBLIC WEBSITE IS NOT LONGER AVAILABLE AND IF YOU WANT ACCESS TO IT, THEN PLEASE DEPLOY IT YOURSELF USING DOCKER AS DOCUMENTED IN THE GITHUB PAGE.
 
 
 ## BioSAILs
@@ -237,15 +291,8 @@ module search abyss
 
 
 
-## The HPC Front end Interface
 
-
-## Data archiving/dearchiving, sharing, and submission to public repositories
-
-
-## Tips and Tricks
-
-
+This repo is intended to familiarize you with some of the Bioinformatics resources that are available to you at NYUAD. There is a lot more that we can describe and cover, but we feel that what we have described in this page should help you get up and running with your current projects, and as always, if we missed something, or if you have any suggestions, then just let us know at nyuad.cgsb.cb@nyu.edu.
 
 
 
