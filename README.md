@@ -195,7 +195,7 @@ If you are running BioSAILs on the NYUAD HPC (Jubail), then it is already instal
    ```
 4. Either copy the test folder or download the zipped folder [**biosails_test.zip**](https://github.com/nizardrou/Core_Bio_resources/blob/main/biosails_test.zip) that is included in this repo, and "cd" into that directory.
    ```
-   cp -r /scratch/gencore/nd48/biosails_test . && cd biosails_test.sh
+   cp -r /scratch/gencore/nd48/biosails_test . && cd biosails_test
    ```
 5. Load the BioSAILs software module
    ```
