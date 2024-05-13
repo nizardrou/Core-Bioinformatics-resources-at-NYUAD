@@ -148,8 +148,11 @@ Currently, we are working on NASQAR 2.0, and in this release we are working hard
 During the hands-on workshop, we will run a live demo of the latest DESEQ2 app in NASQAR 2.0, and if you want to know more about NASQAR 2.0 and how to use/deploy it for your research, then please email us and let us know.
 
 NASQAR Github page: https://github.com/nasqar/NASQAR
+
 NASQAR 2.0 Github page: https://github.com/NYUAD-Core-Bioinformatics/Nasqar2
+
 NASQAR publication: https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-020-03577-4
+
 NASQAR 2.0 web address: https://nasqar2.abudhabi.nyu.edu/
 
 PLEASE NOTE THAT THE ORIGINAL NASQAR PUBLIC WEBSITE IS NOT LONGER AVAILABLE AND IF YOU WANT ACCESS TO IT, THEN PLEASE DEPLOY IT YOURSELF USING DOCKER AS DOCUMENTED IN THE GITHUB PAGE.
